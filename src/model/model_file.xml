@@ -43,38 +43,109 @@
             </memory>
             <functions>
                 <gpu:function>
-                    <name>move</name>
-                    <currentState>moving</currentState>
-                    <nextState>moving</nextState>
+                    <name>move_A</name>
+                    <currentState>moving_A</currentState>
+                    <nextState>moving_A</nextState>
                     <gpu:reallocate>false</gpu:reallocate>
                     <gpu:RNG>false</gpu:RNG>
                 </gpu:function>
                 <gpu:function>
-                    <name>reverse_direction</name>
-                    <currentState>moving</currentState>
-                    <nextState>change_direction</nextState>
+                    <name>reverse_direction_A</name>
+                    <currentState>moving_A</currentState>
+                    <nextState>change_direction_A</nextState>
                     <gpu:reallocate>false</gpu:reallocate>
                     <gpu:RNG>false</gpu:RNG>
                 </gpu:function>
                 <gpu:function>
-                    <name>resume_movement</name>
-                    <currentState>change_direction</currentState>
-                    <nextState>moving</nextState>
+                    <name>resume_movement_A</name>
+                    <currentState>change_direction_A</currentState>
+                    <nextState>moving_A</nextState>
                     <gpu:reallocate>false</gpu:reallocate>
                     <gpu:RNG>false</gpu:RNG>
                 </gpu:function>
             </functions>
             <states>
                 <gpu:state>
-                    <name>moving</name>
+                    <name>moving_A</name>
                 </gpu:state>
                 <gpu:state>
-                    <name>change_direction</name>
+                    <name>change_direction_A</name>
                 </gpu:state>
                 <gpu:state>
-                    <name>get_going_again</name>
+                    <name>get_going_again_A</name>
                 </gpu:state>
-                <initialState>moving</initialState>
+                <initialState>moving_A</initialState>
+            </states>
+            <gpu:type>continuous</gpu:type>
+            <gpu:bufferSize>2048</gpu:bufferSize>
+        </gpu:xagent>
+        <gpu:xagent>
+            <name>B</name>
+            <description>Particle B</description>
+            <memory>
+                <gpu:variable>
+                    <type>int</type>
+                    <name>id</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>x</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>y</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>z</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>fx</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>fy</name>
+                </gpu:variable>
+                <gpu:variable>
+                    <type>float</type>
+                    <name>fz</name>
+                </gpu:variable>
+            </memory>
+            <functions>
+                <gpu:function>
+                    <name>move_B</name>
+                    <currentState>moving_B</currentState>
+                    <nextState>moving_B</nextState>
+                    <gpu:reallocate>false</gpu:reallocate>
+                    <gpu:RNG>false</gpu:RNG>
+                </gpu:function>
+                <gpu:function>
+                    <name>reverse_direction_B</name>
+                    <currentState>moving_B</currentState>
+                    <nextState>change_direction_B</nextState>
+                    <gpu:reallocate>false</gpu:reallocate>
+                    <gpu:RNG>false</gpu:RNG>
+                </gpu:function>
+                <gpu:function>
+                    <name>resume_movement_B</name>
+                    <currentState>change_direction_B</currentState>
+                    <nextState>moving_B</nextState>
+                    <gpu:reallocate>false</gpu:reallocate>
+                    <gpu:RNG>false</gpu:RNG>
+                </gpu:function>
+            </functions>
+            <states>
+                <gpu:state>
+                    <name>moving_B</name>
+                </gpu:state>
+                <gpu:state>
+                    <name>change_direction_B</name>
+                </gpu:state>
+                <gpu:state>
+                    <name>get_going_again_B</name>
+                </gpu:state>
+                <initialState>moving_B</initialState>
             </states>
             <gpu:type>continuous</gpu:type>
             <gpu:bufferSize>2048</gpu:bufferSize>
@@ -121,17 +192,26 @@
     <layers>
         <layer>
             <gpu:layerFunction>
-                <name>move</name>
+                <name>move_A</name>
+            </gpu:layerFunction>
+            <gpu:layerFunction>
+                <name>move_B</name>
             </gpu:layerFunction>
         </layer>
         <layer>
             <gpu:layerFunction>
-                <name>reverse_direction</name>
+                <name>reverse_direction_A</name>
+            </gpu:layerFunction>
+            <gpu:layerFunction>
+                <name>reverse_direction_B</name>
             </gpu:layerFunction>
         </layer>
         <layer>
             <gpu:layerFunction>
-                <name>resume_movement</name>
+                <name>resume_movement_A</name>
+            </gpu:layerFunction>
+            <gpu:layerFunction>
+                <name>resume_movement_B</name>
             </gpu:layerFunction>
         </layer>
     </layers>
